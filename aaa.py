@@ -1,9 +1,11 @@
 import RPi.GPIO as GPIO
 import time
+import secrets
 from gpiozero import LED
 from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)
 
 red = LED(17)
 GPIO.setmode(GPIO.BCM)
