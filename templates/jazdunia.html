@@ -11,6 +11,9 @@
                     type: 'GET',
                     success: function(response) {
                         $('#distance').text('Distance: ' + response.distance + ' cm');
+                        if (response.distance < 5) {
+                            alert('Dystans przekroczyl 5 cm!!');
+                        }    
                     },
                     error: function(xhr, status, error) {
                         console.log(error);
