@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MIERNIK DYSTANSU</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function updateDistance() {
+                $.ajax({
+                    url: '/get_distance',
+                    type: 'GET',
+                    success: function(response) {
+                        $('#distance').text('Distance: ' + response.distance + ' cm');
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    },
+                    complete: function() {
+                        setTimeout(updateDistance, 1000);
+                    }
+                });
+            }
+
+            updateDistance();
+        });
+    </script>
+</head>
+<body>
+    <h1 id="distance">Wczytywanie...</h1>
+</body>
+</html>
